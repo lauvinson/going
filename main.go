@@ -26,11 +26,11 @@ func main() {
 			log.Printf("进行UDP打洞,建立 %s <--> %s 的连接\n", peers[0].String(), peers[1].String())
 			listener.WriteToUDP([]byte(peers[1].String()), &peers[0])
 			listener.WriteToUDP([]byte(peers[0].String()), &peers[1])
+			// clean the peers
+			peers = make([]net.UDPAddr, 0, 2)
 			//time.Sleep(time.Second * 8)
 			//log.Println("中转服务器退出,仍不影响peers间通信")
 			//return
-			for {
-			}
 		}
 	}
 }
